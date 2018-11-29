@@ -1,0 +1,15 @@
+{
+  "name": "translink-pwa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:mmckeaveney/translink-pwa.git",
+  "author": "Martin McKeaveney <martin@squarefoot.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.10.3"
+  }
+}
