@@ -1,6 +1,3 @@
-const store = {
-  currentRoute: '/',
-  trainTimes: []
-};
+let store = {};
 
 export default store;

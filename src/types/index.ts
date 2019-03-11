@@ -5,6 +5,17 @@ export interface Station {
   name: string
 }
 
+export interface CallingPoint {
+  Name: string 
+  crs: string 
+  etarr: string 
+  etdep: string 
+  tiploc: string 
+  ttarr: string 
+  ttdep: string 
+  type: string 
+}
+
 export interface TrainService {
   Origin1: {
     crs: string
@@ -36,6 +47,10 @@ export interface TrainService {
     time: TimeStatus 
   }
 
+  Dest1CallingPoints: {
+    CallingPoint: [CallingPoint]
+  }
+
   ArriveTime: {
     Arrived: YesOrNo
     time: string
@@ -65,8 +80,18 @@ export interface TrainService {
   ServiceStatus: {
     Status: TimeStatus
   }
+
+  LastReport: {
+    station1: string 
+    station2: string 
+    time: string 
+    tiploc: string 
+    type: string 
+  }
 } 
 
 export interface TrainTimeTable {
+  Timestamp: string
+  name: string
   Service: [TrainService]
 }
