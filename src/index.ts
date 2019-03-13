@@ -23,7 +23,7 @@ document.body.addEventListener('click', evt => {
 
 backButton.addEventListener('click', () => StationAutocomplete.render());
 
-function renderApp() {
+function renderApp(): void {
   const station = localStorage.getItem('station');
   if (station) {
     fetchTrainTimes(station).then(data => TrainCardList.render(data));
@@ -37,6 +37,7 @@ renderApp();
 // ServiceWorker
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
-    .register('./service-worker.js')
-    .then(() => console.log('Service Worker Registered'));
+    .register('/service-worker.js')
+    .then(() => console.log('Service Worker Registered'))
+    .catch(e => console.error('Error registering Service Worker', e));
 }
