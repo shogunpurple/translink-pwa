@@ -1,4 +1,5 @@
 import { STATION_CODES } from "../constants";
+import { Station } from "../types/index";
 
 const StationAutocomplete = {
   template: `
@@ -15,10 +16,10 @@ const StationAutocomplete = {
     </div>
   `,
   renderOptions: function() {
-    const inputValue = document.querySelector('.autocomplete__input').value;
+    const input = <HTMLInputElement> document.querySelector('.autocomplete__input');
     const autocompleteOptions = STATION_CODES
-        .filter(station => station.name.startsWith(inputValue))
-        .map(autocompleteOption => `<li class="autocomplete__item">${autocompleteOption.name}</li>`)
+        .filter((station: Station) => station.name.startsWith(input.value))
+        .map((autocompleteOption: Station) => `<li class="autocomplete__item">${autocompleteOption.name}</li>`)
         .join('');
       
     document.querySelector('.autocomplete__options').innerHTML = autocompleteOptions;

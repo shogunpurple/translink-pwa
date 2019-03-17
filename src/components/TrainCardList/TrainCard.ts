@@ -1,6 +1,7 @@
-import { TrainService } from '../types';
+import { TrainService } from "../../types";
 
-const lastReport = ({ station1, time }) => time ? `${station1} at ${time}` : 'No Report';
+const lastReport = ({ station1, time }: { station1: string; time: string }) =>
+  time ? `${station1} at ${time}` : "No Report";
 
 const TrainCard = (data: TrainService) => `
   <div class="train__card">

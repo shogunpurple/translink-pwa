@@ -1,4 +1,6 @@
-const STATION_CODES = [
+import { Station } from "../types/index";
+
+const STATION_CODES: Station[] = [
   {
     code: "3042a0",
     name: "Adelaide"
@@ -33,7 +35,7 @@ const STATION_CODES = [
   },
   {
     code: "3043AF",
-    name: "Belfast Central"
+    name: "Belfast Lanyon Place"
   },
   {
     code: "3042A6",

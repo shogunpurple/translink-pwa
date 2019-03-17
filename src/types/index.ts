@@ -3,6 +3,7 @@ type TimeStatus  = 'On time' | 'Delayed'
 
 export interface Station {
   name: string
+  code: string
 }
 
 export interface CallingPoint {
@@ -90,8 +91,12 @@ export interface TrainService {
   }
 } 
 
-export interface TrainTimeTable {
+export interface StationBoard {
   Timestamp: string
   name: string
   Service: [TrainService]
+}
+
+export interface TrainTimeTable {
+  StationBoard: StationBoard;
 }

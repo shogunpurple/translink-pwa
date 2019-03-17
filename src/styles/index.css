@@ -21,6 +21,15 @@
   cursor: pointer;
 }
 
+.offline__indicator {
+  background: #aaaaaa;
+  border-radius: 5px;
+  padding: 10px;
+  position: fixed;
+  top: 5px;
+  left: 5px;
+}
+
 /* autocomplete */
 .autocomplete__input {
   width: 100%;
