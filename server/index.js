@@ -37,7 +37,10 @@ if (process.env.NODE_ENV === 'development') {
 
 app.get('/translink/:stationCode', translinkController.fetchTrainTimes);
 
-
-app.listen(SERVER_PORT, () =>
-  console.log(`App listening on port ${SERVER_PORT}! 🚀`)
-);
+if (process.env.LAMBDA_TASK_ROOT) {
+    const serverlessExpress = require('aws-serverless-express');
+    const server = serverlessExpress.createServer(app);
+    exports.main = (event, context) => serverlessExpress.proxy(server, event, context)
+} else {
+    app.listen(SERVER_PORT, () => console.log(`Listening on 3000`));
+}
