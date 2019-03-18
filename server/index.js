@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 
@@ -30,7 +31,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(devMiddleware);
 } else {
   // Production
-  app.use(express.static('../dist'))
+  app.use(express.static(path.join(__dirname, '../dist')))
 }
 
 

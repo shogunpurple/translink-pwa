@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+
 
 module.exports = {
   entry: './src/index.ts',
@@ -45,6 +47,10 @@ module.exports = {
         urlPattern: new RegExp('http://localhost:3000'),
         handler: 'NetworkFirst'
       }]
-    })
+    }),
+    new CopyPlugin([ 
+      'manifest.json',
+      { from: 'assets', to: 'assets' }
+    ])
   ]
 };

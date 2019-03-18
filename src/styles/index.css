@@ -1,9 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
 .app__container {
+  padding: 1em;
 }
 
 .gradient {
-  background-color: #21D4FD;
-  background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+  background-color: #21d4fd;
+  background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
 }
 
 .header {
@@ -15,9 +28,10 @@
   padding: 10px;
   border: 1px solid #ccc;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 10px;
+  margin-bottom: 1em;
 }
 
-.autocomplete__item:hover {
+.autocomplete__item {
   cursor: pointer;
 }
 
@@ -33,9 +47,10 @@
 /* autocomplete */
 .autocomplete__input {
   width: 100%;
-  border-radius: 5px;
   height: 70px;
   font-size: 20px;
+  border: 1px solid #aaaaaa;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 10px;
 }
 
 .autocomplete__options {
