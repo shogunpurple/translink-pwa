@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
@@ -29,7 +29,7 @@ module.exports = {
     extensions: ['.ts', '.js']
   },
   output: {
-    filename: 'translink-pwa.js',
+    filename: 'translink-pwa.[chunkhash].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
@@ -43,7 +43,7 @@ module.exports = {
       skipWaiting: true,
       runtimeCaching: [{
         urlPattern: new RegExp('http://localhost:3000'),
-        handler: 'StaleWhileRevalidate'
+        handler: 'NetworkFirst'
       }]
     })
   ]

@@ -1,10 +1,6 @@
 const express = require('express');
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
 
 const app = express();
-const config = require('../webpack.config.js');
-const compiler = webpack(config);
 
 const translinkController = require('./controllers/translinkController');
 
@@ -17,14 +13,25 @@ const enableCorsMiddleware = (req, res, next) => {
   next();
 };
 
-// Tell express to use the webpack-dev-middleware and use the webpack.config.js
-// configuration file as a base.
-const devMiddleware = webpackDevMiddleware(compiler, {
-  publicPath: config.output.publicPath
-});
-
 app.use(enableCorsMiddleware);
-app.use(devMiddleware);
+
+if (process.env.NODE_ENV === 'development') {
+  const webpack = require('webpack');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const compiler = webpack(config);
+  const config = require('../webpack.config.js');
+
+  // Tell express to use the webpack-dev-middleware and use the webpack.config.js
+  // configuration file as a base.
+  const devMiddleware = webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath
+  });
+
+  app.use(devMiddleware);
+} else {
+  // Production
+  app.use(express.static('../dist'))
+}
 
 
 app.get('/translink/:stationCode', translinkController.fetchTrainTimes);

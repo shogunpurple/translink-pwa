@@ -2,16 +2,15 @@ import TrainCard from "./TrainCard";
 import { StationBoard, TrainService } from "../../types";
 
 const TrainCardList = {
-  template: (props: StationBoard) => {
-    // TODO: is this still required?
-    const services: [TrainService] = Array.isArray(props.Service)
-      ? props.Service
-      : [props.Service];
-
+  getServices: function(services?: TrainService[]) {
+    if (!services) return [];
+    return Array.isArray(services) ? services : [services];
+  },
+  template: function(props: StationBoard) {
     return `
       <div class="train__cardlist">
         <h2>${props.name} - Last Updated: ${props.Timestamp}</h2>
-        ${services.map(TrainCard).join("")} 
+        ${this.getServices(props.Service).map(TrainCard).join("")} 
       </div>
     `;
   },
