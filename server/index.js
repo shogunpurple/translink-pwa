@@ -1,20 +1,9 @@
 const express = require('express');
 const path = require('path');
-
-const app = express();
-
-const translinkController = require('./controllers/translinkController');
+const binaryMimeTypes = require('./mimeTypes');
+const app = require('./app'); 
 
 const SERVER_PORT = 3000;
-
-// Middleware 
-const enableCorsMiddleware = (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-};
-
-app.use(enableCorsMiddleware);
 
 if (process.env.NODE_ENV === 'development') {
   const webpack = require('webpack');
@@ -29,18 +18,11 @@ if (process.env.NODE_ENV === 'development') {
   });
 
   app.use(devMiddleware);
+  app.listen(SERVER_PORT, () => console.log(`Listening on 3000`));
 } else {
   // Production
-  app.use(express.static(path.join(__dirname, '../dist')))
+  const serverless = require('serverless-http');
+  app.use(express.static(path.join(__dirname, '../dist')));
+  exports.handler = serverless(app, { binary: binaryMimeTypes }); 
 }
 
-
-app.get('/translink/:stationCode', translinkController.fetchTrainTimes);
-
-if (process.env.LAMBDA_TASK_ROOT) {
-    const serverlessExpress = require('aws-serverless-express');
-    const server = serverlessExpress.createServer(app);
-    exports.main = (event, context) => serverlessExpress.proxy(server, event, context)
-} else {
-    app.listen(SERVER_PORT, () => console.log(`Listening on 3000`));
-}

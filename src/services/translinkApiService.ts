@@ -1,7 +1,7 @@
 import { STATION_CODES } from '../constants';
 import { TrainTimeTable, Station } from '../types';
 
-const TRANSLINK_REALTIME_URL = '/translink';
+const TRANSLINK_REALTIME_URL = '/pwa/translink';
 
 const fetchTrainTimes = async (destination: string, cache?: boolean): Promise<TrainTimeTable> => {
   const stationCode = STATION_CODES.find((station: Station) => station.name === destination).code;

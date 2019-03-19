@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
+const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 module.exports = {
   entry: './src/index.ts',
@@ -33,7 +34,7 @@ module.exports = {
   output: {
     filename: 'translink-pwa.[chunkhash].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    publicPath: process.env.ASSET_PATH || '/' 
   },
   plugins: [
     new HtmlWebpackPlugin({ template: 'index.html' }),
@@ -44,7 +45,7 @@ module.exports = {
       clientsClaim: true,
       skipWaiting: true,
       runtimeCaching: [{
-        urlPattern: new RegExp('http://localhost:3000'),
+        urlPattern: /\/translink/,
         handler: 'NetworkFirst'
       }]
     }),
