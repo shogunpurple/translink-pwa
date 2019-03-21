@@ -2,8 +2,7 @@ import TrainCard from "./TrainCard";
 import { StationBoard, TrainService } from "../../types";
 
 const TrainCardList = {
-  getServices: function(services?: TrainService[]) {
-    if (!services) return [];
+  getServices: function(services: TrainService[] = []) {
     return Array.isArray(services) ? services : [services];
   },
   template: function(props: StationBoard) {

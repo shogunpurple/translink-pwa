@@ -56,7 +56,7 @@ renderApp();
 // ServiceWorker
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
-    .register('https://ficbx9d7bc.execute-api.us-east-1.amazonaws.com/pwa/service-worker.js')
+    .register('/pwa/service-worker.js')
     .then(() => console.log('Service Worker Registered'))
     .catch(e => console.error('Error registering Service Worker', e));
 }

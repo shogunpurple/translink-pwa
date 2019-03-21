@@ -34,7 +34,7 @@ module.exports = {
   output: {
     filename: 'translink-pwa.[chunkhash].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: process.env.ASSET_PATH || '/' 
+    publicPath: ASSET_PATH 
   },
   plugins: [
     new HtmlWebpackPlugin({ template: 'index.html' }),
