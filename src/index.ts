@@ -56,7 +56,7 @@ renderApp();
 // ServiceWorker
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
-    .register('/pwa/service-worker.js')
+    .register('/service-worker.js')
     .then(() => console.log('Service Worker Registered'))
     .catch(e => console.error('Error registering Service Worker', e));
 }

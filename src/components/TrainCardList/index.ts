@@ -9,7 +9,9 @@ const TrainCardList = {
     return `
       <div class="train__cardlist">
         <h2>${props.name} - Last Updated: ${props.Timestamp}</h2>
-        ${this.getServices(props.Service).map(TrainCard).join("")} 
+        ${this
+          .getServices(props.Service)
+          .map(TrainCard).join("")} 
       </div>
     `;
   },
