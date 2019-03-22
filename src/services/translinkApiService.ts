@@ -1,11 +1,9 @@
 import { STATION_CODES } from '../constants';
 import { TrainTimeTable, Station } from '../types';
 
-const TRANSLINK_REALTIME_URL = '/translink';
-
 const fetchTrainTimes = async (destination: string, cache?: boolean): Promise<TrainTimeTable> => {
   const stationCode = STATION_CODES.find((station: Station) => station.name === destination).code;
-  const url = `${TRANSLINK_REALTIME_URL}/${stationCode}`;
+  const url = `/translink/${stationCode}`;
 
   // fetch from the cache first
   if ('caches' in window && cache) {

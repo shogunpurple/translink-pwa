@@ -1,0 +1,25 @@
+service: translink-pwa
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: pwa 
+  region: us-east-1
+
+functions:
+  app:
+    handler: server/index.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+
+plugins:
+  - serverless-offline
+  - serverless-apigw-binary
+
+custom:
+  # apigwBinary serverless plugin automatically configures API gateway to allow binary file support.
+  # This allows us to statically host content on an express server running in lambda.
+  apigwBinary:
+      types:
+        - '*/*'

@@ -5,15 +5,15 @@ const lastReport = ({ station1, time }: { station1: string; time: string }) =>
 
 const TrainCard = (data: TrainService) => `
   <div class="train__card">
-    <div>Platform: ${data.Platform.Number}</div>
-    <div>From: ${data.Origin1.name}</div>
-    <div>Scheduled Origin Departure Time: ${data.DepartTime.time}</div>
-    <div>Expected Depart Time: ${data.ExpectedDepartTime.time}</div>
-    <div>To: ${data.Destination1.name}</div>
-    <div>Scheduled Destination Arrive Time: ${data.ArriveTime.time}</div>
-    <div>Expected Arrive Time: ${data.ExpectedArriveTime.time}</div>
-    <div>Delay: ${data.Delay.Minutes}</div>
-    <div>Last Report: ${lastReport(data.LastReport)}</div>
+    <div><strong>Platform:</strong> ${data.Platform.Number}</div>
+    <div><strong>From:</strong> ${data.Origin1.name}</div>
+    <div><strong.Scheduled Origin Departure Time:</strong> ${data.DepartTime.time}</div>
+    <div><strong>Expected Depart Time:</strong> ${data.ExpectedDepartTime.time}</div>
+    <div><strong>To:</strong> ${data.Destination1.name}</div>
+    <div><strong>Scheduled Destination Arrive Time:</strong> ${data.ArriveTime.time}</div>
+    <div><strong>Expected Arrive Time:</strong> ${data.ExpectedArriveTime.time}</div>
+    <div><strong>Delay:</strong> ${data.Delay.Minutes}</div>
+    <div><strong>Last Report:</strong> ${lastReport(data.LastReport)}</div>
   </div>
 `;
 
