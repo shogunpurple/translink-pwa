@@ -4,6 +4,7 @@
   --secondary-text-color: #444444;
   --tertiary-text-color: #7A7A7A;
   --accent-color: #aaaaaa;
+  --background-gradient: linear-gradient(19deg, #21D4FD 0%, #5533ff 100%);
 }
 
 * {
@@ -16,11 +17,23 @@ html, body {
   padding: 0;
   height: 100%;
   width: 100%;
-  background: var(--primary-color);
   color: var(--text-color);
 }
 
+.background {
+  height: 100%;
+  background-image: var(--background-gradient);
+  transform-origin: 0;
+  transform: skewY(-40deg);
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 10px;
+  position: relative;
+}
+
 .app__container {
+  position: absolute;
+  width: 100%;
+  top: 1em;
   padding: 1em;
 }
 
