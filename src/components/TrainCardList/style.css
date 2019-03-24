@@ -1,0 +1,63 @@
+/* list */
+.train-cardlist h4 {
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* cards */
+.train-card {
+  color: #444444;
+  background: #fff;
+  font-size: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 10px;
+  margin-top: 1em;
+  border-radius: 4px;
+}
+
+.train-card hr {
+  background-color: var(--primary-color);
+  height: 4px;
+  margin-left: 0;
+  width: 50%;
+}
+
+.train-card .from-origin {
+  text-transform: uppercase;
+  font-size: 1.1em;
+}
+
+.train-card__platform {
+  font-size: 0.8em;
+  color: var(--tertiary-text-color);
+}
+
+.train-card__field {
+  color: var(--tertiary-text-color);
+}
+
+.train-card__field strong {
+  color: var(--primary-color);
+  text-transform: uppercase;
+  display: block;
+  font-size: 0.7em;
+}
+
+/* Back Button */
+.backbutton {
+  cursor: pointer;
+  border-radius: 50%;
+  height: 55px;
+  background: var(--text-color);
+  color: var(--primary-color);
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  transition: transform 0.5s;
+  will-change: transform;
+}
+
+.backbutton:hover {
+  transform: scale(1.1);
+}

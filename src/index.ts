@@ -4,7 +4,6 @@ import TrainCardList from './components/TrainCardList';
 import './styles/index.css';
 
 // Elements
-const backButton: HTMLElement = document.querySelector('.backbutton');
 const offlineIndicator: HTMLElement = document.querySelector('.offline__indicator');
 
 // Event Listeners
@@ -31,9 +30,6 @@ window.addEventListener('load', function checkOnlineStatus() {
   window.addEventListener('offline', updateOnlineStatus);
   updateOnlineStatus();
 });
-
-backButton.addEventListener('click', () => StationAutocomplete.render());
-
 
 // Initial Rendering Code 
 function renderApp(): void {
