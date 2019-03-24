@@ -1,19 +1,31 @@
-import { TrainService } from "../../types";
+import { TrainService, LastReport } from "../../types";
+import { TERMINATING } from "../../constants";
 
-const lastReport = ({ station1, time }: { station1: string; time: string }) =>
-  time ? `${station1} at ${time}` : "No Report";
+const lastReport = ({ station1, time }: LastReport) => time ? `${station1} at ${time}` : "No Report";
 
-const TrainCard = (data: TrainService) => `
-  <div class="train__card">
-    <div><strong>Platform:</strong> ${data.Platform.Number}</div>
-    <div><strong>From:</strong> ${data.Origin1.name}</div>
-    <div><strong.Scheduled Origin Departure Time:</strong> ${data.DepartTime.time}</div>
-    <div><strong>Expected Depart Time:</strong> ${data.ExpectedDepartTime.time}</div>
-    <div><strong>To:</strong> ${data.Destination1.name}</div>
-    <div><strong>Scheduled Destination Arrive Time:</strong> ${data.ArriveTime.time}</div>
-    <div><strong>Expected Arrive Time:</strong> ${data.ExpectedArriveTime.time}</div>
-    <div><strong>Delay:</strong> ${data.Delay.Minutes}</div>
-    <div><strong>Last Report:</strong> ${lastReport(data.LastReport)}</div>
+const TrainCardField = ({ value, title }: { value: string, title: string }) => value ? `
+  <div class="train-card__field">
+    <strong>${title}</strong> 
+    ${value}
+  </div>
+` : '';
+
+const TrainCard = (data: TrainService & { stationName: string }) => `
+  <div class="train-card">
+    <div class="from-origin">
+      ${data.Origin1.name} / ${data.Destination1.name === TERMINATING ? data.stationName : data.Destination1.name}
+    </div>
+    <div class="train-card__platform">PLATFORM ${data.Platform.Number}</div>
+    <hr>
+    ${TrainCardField({ value: data.ArriveTime.time, title: `Scheduled Arrival Time (${data.stationName})` })}
+    ${TrainCardField({ value: data.ExpectedArriveTime.time, title: 'Arrival Status' })}
+
+    ${TrainCardField({ value: data.DepartTime.time, title: `Scheduled Departure Time (${data.stationName})` })}
+    ${TrainCardField({ value: data.ExpectedDepartTime.time, title: 'Departure Status' })}
+
+    ${TrainCardField({ value: data.Delay.Minutes, title: 'Delay' })}
+
+    ${TrainCardField({ value: lastReport(data.LastReport), title: 'Last Reported At' })}
   </div>
 `;
 

@@ -37,7 +37,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({ template: 'index.html' }),
     new ScriptExtHtmlWebpackPlugin({ defaultAttribute: 'async' }),
-    new MiniCssExtractPlugin({ filename: `[name].css` }),
+    new MiniCssExtractPlugin({ filename: `[name].[contenthash].css` }),
     new WorkboxPlugin.GenerateSW({
       swDest: `service-worker.js`,
       clientsClaim: true,

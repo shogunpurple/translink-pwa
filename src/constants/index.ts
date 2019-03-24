@@ -1,5 +1,7 @@
 import { Station } from "../types/index";
 
+const TERMINATING = '**Terminates**';
+
 const STATION_CODES: Station[] = [
   {
     code: "3042a0",
@@ -231,4 +233,4 @@ const STATION_CODES: Station[] = [
   }
 ];
 
-export { STATION_CODES };
+export { STATION_CODES, TERMINATING };

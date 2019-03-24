@@ -8,8 +8,8 @@ const StationAutocomplete = {
       <input 
         class="autocomplete__input" 
         type="text"
-        placeholder="Enter Station.."
-        aria-label="Enter Station.."
+        placeholder="Search.."
+        aria-label="Search.."
       ></input>
       <ul class="autocomplete__options">
       </ul>
