@@ -14,9 +14,12 @@ const TrainCardList = {
         <h1>${props.name}</h2>
         <h4>Last Updated</h4>
         <div>${props.Timestamp}</div>
-        ${this
-          .getServices(props.Service)
-          .map((service: TrainService) => TrainCard({ ...service, stationName: props.name })).join("")} 
+        ${props.Service ?
+          this
+            .getServices(props.Service)
+            .map((service: TrainService) => TrainCard({ ...service, stationName: props.name })).join("")
+          : `<div>Train services running to or from ${props.name} are finished for today.</div>`
+        }
       </div>
     `;
   },
