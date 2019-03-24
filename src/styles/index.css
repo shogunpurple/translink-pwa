@@ -24,12 +24,6 @@ html, body {
   padding: 1em;
 }
 
-.autocomplete__item {
-  cursor: pointer;
-  background: var(--text-color);
-  color: var(--secondary-text-color);
-}
-
 .offline__indicator {
   background: var(--accent-color);
   border-radius: 5px;
@@ -58,4 +52,7 @@ html, body {
   padding: 10px;
   font-size: 2em;
   border: 1px solid var(--accent-color);
+  cursor: pointer;
+  background: var(--text-color);
+  color: var(--secondary-text-color);
 }
