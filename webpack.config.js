@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
+
 module.exports = {
   entry: './src/index.ts',
   devtool: 'inline-source-map',
@@ -18,9 +19,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
+          'style-loader',
           'css-loader'
         ]
       }
@@ -37,7 +36,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({ template: 'index.html' }),
     new ScriptExtHtmlWebpackPlugin({ defaultAttribute: 'async' }),
-    new MiniCssExtractPlugin({ filename: `[name].[contenthash].css` }),
     new WorkboxPlugin.GenerateSW({
       swDest: `service-worker.js`,
       clientsClaim: true,
