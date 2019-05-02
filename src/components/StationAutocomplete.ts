@@ -18,7 +18,7 @@ const StationAutocomplete = {
   renderOptions: function() {
     const input = <HTMLInputElement> document.querySelector('.autocomplete__input');
     const autocompleteOptions = STATION_CODES
-        .filter((station: Station) => station.name.toLowerCase().startsWith(input.value.toLowerCase()))
+        .filter((station: Station) => new RegExp(input.value, 'ig').test(station.name))
         .map((autocompleteOption: Station) => `<li class="autocomplete__item">${autocompleteOption.name}</li>`)
         .join('');
       
