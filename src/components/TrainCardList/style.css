@@ -5,20 +5,26 @@
 }
 
 /* cards */
+.train-card__container {
+  background: var(--background-gradient);
+  padding: 1px;
+  margin-top: 1em;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 10px;
+  border-radius: 4px;
+}
+
 .train-card {
   color: #444444;
   background: #fff;
   font-size: 20px;
   padding: 20px;
-  border: 1px solid #ccc;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 10px;
-  margin-top: 1em;
   border-radius: 4px;
 }
 
 .train-card hr {
   background-color: var(--primary-color);
-  height: 4px;
+  height: 3px;
+  border: 0;
   margin-left: 0;
   width: 50%;
 }
